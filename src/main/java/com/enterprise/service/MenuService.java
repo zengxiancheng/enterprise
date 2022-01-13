@@ -8,7 +8,9 @@ import java.util.*;
 
 public interface MenuService extends Services<Menu>{
 
-	List<Menu> selectList(Map<String, String> param);
+	 List<Menu> selectList(Map<String, String> param);
+	 
+	 List<Menu> selectList(List<String> param);
 	 int getCount(Menu menu);
 
 	/**

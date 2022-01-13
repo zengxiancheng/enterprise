@@ -3,6 +3,7 @@ package com.enterprise.core;
 import com.enterprise.cache.CacheProvider;
 import com.enterprise.cache.SimpleCacheProvider;
 import com.enterprise.entity.About;
+import com.enterprise.entity.Article;
 import com.enterprise.entity.ArticleCategory;
 import com.enterprise.entity.Contact;
 import com.enterprise.entity.FriendLinks;
@@ -114,6 +115,19 @@ public class SystemManage {
     public void setArticleCategory(List<ArticleCategory> articleCategory){
         putCacheObject("articleCategory",(Serializable)(articleCategory));
     }
+    
+    
+    //文章类别
+    public List<Article> getArticle(){
+    	
+    	List<Article> articles=getCacheObject("article");
+        return articles;
+    }
+    public void setArticle(List<Article> article){
+        putCacheObject("article",(Serializable)(article));
+    }
+    
+    
     //联系我们
     public List<Contact> getContact(){
         return getCacheObject("contacts");

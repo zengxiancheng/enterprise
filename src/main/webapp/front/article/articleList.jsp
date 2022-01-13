@@ -20,7 +20,7 @@
 <div class="warp_main">
     <div class="warp_left">
         <div class="warp_left_box">
-            <h3>新闻动态</h3>
+            <h3>产品中心</h3>
             <ul>
                 <c:forEach var="item" items="<%=SystemManage.getInstance().getArticleCategory()%>">
                     <li <c:if test="${!empty code && code eq item.code}">class="active"</c:if> ><a href="<%=path%>/article/${item.code}">${item.catename}</a></li>
@@ -32,7 +32,7 @@
         <div class="breadcrumb">
             <a href="<%=path%>/index">首页</a>
             >
-            <a href="<%=path%>/article">新闻动态</a>
+            <a href="<%=path%>/article">产品中心</a>
           <%
                 String code = (String)request.getAttribute("code");
                 if (code != null && code.length() != 0 ) {

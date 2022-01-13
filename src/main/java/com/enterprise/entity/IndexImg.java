@@ -15,7 +15,12 @@ public class IndexImg extends PageModel implements Serializable {
     private String link;        //跳转链接
     private int orders;      //排序
     private String status;      //状态
-
+    
+    // 图片上部描述
+    private String topDesc;
+    // 图片下部描述
+    private String buttomDesc;
+    
     @Override
     public void clean() {
         super.clean();
@@ -24,17 +29,37 @@ public class IndexImg extends PageModel implements Serializable {
         link = null;
         orders = 0;
         status = null;
+        topDesc = null;
+        buttomDesc = null;
     }
 
     public String getTitle() {
         return title;
     }
-
+  
     public void setTitle(String title) {
         this.title = title;
     }
+    
+    
 
-    public String getPictureUrl() {
+    public String getTopDesc() {
+		return topDesc;
+	}
+
+	public void setTopDesc(String topDesc) {
+		this.topDesc = topDesc;
+	}
+
+	public String getButtomDesc() {
+		return buttomDesc;
+	}
+
+	public void setButtomDesc(String buttomDesc) {
+		this.buttomDesc = buttomDesc;
+	}
+
+	public String getPictureUrl() {
         return pictureUrl;
     }
 

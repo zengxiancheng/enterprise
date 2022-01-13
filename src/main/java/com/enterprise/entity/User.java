@@ -18,6 +18,7 @@ public class User extends PageModel implements Serializable {
 	private String oldPassword;	//原始密码
 	private String manage_vcode;//验证码
 	private String portrait;	//头像
+	private String role;	//角色
 
 
 	public void clear() {
@@ -34,6 +35,7 @@ public class User extends PageModel implements Serializable {
 		oldPassword = null;
 		manage_vcode = null;
 		portrait = null;
+		role = null;
 	}
 
 
@@ -141,21 +143,28 @@ public class User extends PageModel implements Serializable {
 	public void setPortrait(String portrait) {
 		this.portrait = portrait;
 	}
+	
+	
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 
 	@Override
 	public String toString() {
-		return "User{" +
-				", username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", createtime='" + createtime + '\'' +
-				", updatetime='" + updatetime + '\'' +
-				", createAccount='" + createAccount + '\'' +
-				", updateAccount='" + updateAccount + '\'' +
-				", email='" + email + '\'' +
-				", newpassword='" + newpassword + '\'' +
-				", newpassword2='" + newpassword2 + '\'' +
-				", nickname='" + nickname + '\'' +
-				", oldPassword='" + oldPassword + '\'' +
-				'}';
+		return "User {username=" + username + ", password=" + password + ", createtime=" + createtime + ", updatetime="
+				+ updatetime + ", createAccount=" + createAccount + ", updateAccount=" + updateAccount + ", email="
+				+ email + ", newpassword=" + newpassword + ", newpassword2=" + newpassword2 + ", nickname=" + nickname
+				+ ", oldPassword=" + oldPassword + ", manage_vcode=" + manage_vcode + ", portrait=" + portrait
+				+ ", role=" + role + "}";
 	}
+
+
+
 }

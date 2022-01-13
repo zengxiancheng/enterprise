@@ -46,16 +46,15 @@
         <div style="overflow: hidden;">
             <div class="article_content">
                 <%
-                    for (Service ac : SystemManage.getInstance().getService()) {
-                        System.out.println(id);
+                    for (Service ac : SystemManage.getInstance().getService()) {                       
                         if ((String.valueOf(ac.getId())).equals(id)) {
                 %>
                         <%=ac.getContentHtml()%>
                 <%
                             break;
                         }else{%>
-                <%=ac.getContentHtml()%>
-                <% break;
+     <%--            <%=ac.getContentHtml()%> --%>
+                <% continue;
                             }
                     }
                 %>

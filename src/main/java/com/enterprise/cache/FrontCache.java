@@ -27,6 +27,9 @@ public class FrontCache implements ServletContextAware {
     private MessageService messageService;
 	@Autowired
 	private ArticleCategoryService articleCategoryService;
+	
+	@Autowired
+	private ArticleService   articleService;
 	@Autowired
 	private ContactService contactService;
 	@Autowired
@@ -59,6 +62,7 @@ public class FrontCache implements ServletContextAware {
 		loadContact();
 		loadAbout();
 		loadService();
+		loadArticle();
 	}
 	/**
 	 * 加载系统设置缓存
@@ -159,6 +163,16 @@ public class FrontCache implements ServletContextAware {
 		services = serviceService.selectList(new Service());
 		systemManage.setService(services);
 	}
+	
+	public void loadArticle()throws Exception{
+		
+		List<Article> articles = new ArrayList<Article>();
+		articles = articleService.selectList(new Article());
+		systemManage.setArticle(articles);		
+		
+	}
+	
+	
 
 
 }

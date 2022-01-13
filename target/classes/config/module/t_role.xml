@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="role">
+	<select id="role.selectPageList" parameterType="com.enterprise.entity.Role"
+		resultType="com.enterprise.entity.Role">
+		select * from t_role where 1=1
+		<if test="id!=0">
+			and id=#{id}
+		</if>
+		order by id
+		limit #{offset},#{pageSize}
+	</select>
+	<select id="role.selectPageCount" parameterType="com.enterprise.entity.Role"
+		resultType="java.lang.Integer">
+		select count(*) from (
+		select * from t_role where 1=1
+		) a
+	</select>
+	<select id="role.selectOne" parameterType="com.enterprise.entity.Role"
+		resultType="com.enterprise.entity.Role">
+		select * from t_role where 1=1
+		<if test="roleName!=null and roleName!=''">
+			and rolename=#{roleName}
+		</if>
+		<if test="roleCode!=null and roleCode!=''">
+			and rolecode=#{roleCode}
+		</if>
+		<if test="id!=0">
+			and id=#{id}
+		</if>		
+	</select>
+	
+	
+	<select id="role.selectList" parameterType="com.enterprise.entity.Role" resultType="com.enterprise.entity.Role">
+        select * from t_role where 1=1 
+        <if test="roleName!=null and roleName!=''">
+			and rolename=#{roleName}
+		</if>
+		<if test="roleCode!=null and roleCode!=''">
+			and rolecode=#{roleCode}
+		</if>       
+        order by id DESC
+    </select>
+		
+	<select id="role.selectOneByCondition" parameterType="com.enterprise.entity.Role"
+		resultType="com.enterprise.entity.Role">
+		select * from t_role where 1=1
+		<if test="nickname!=null and nickname!=''">
+			and nickname=#{nickname}
+		</if>
+	</select>
+	<insert id="role.insert" parameterType="com.enterprise.entity.Role"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into t_role
+		(id,rolename,rolecode,createtime,updatetime)
+		values
+		(id,#{roleName},#{roleCode},now(),now())
+	</insert>
+	<update id="role.update" parameterType="com.enterprise.entity.Role">
+		update t_role set
+		id=#{id},updatetime=now()
+		<if test="roleCode!=null and roleCode!=''">
+			,rolecode=#{roleCode}
+		</if>
+		<if test="roleName!=null and roleName!=''">
+			,rolename=#{roleName}
+		</if>
+		where id=#{id}
+	</update>	
+	<delete id="role.delete" parameterType="com.enterprise.entity.Role">
+		delete from t_role where id=#{id}
+	</delete>
+</mapper>

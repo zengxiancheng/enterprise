@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/manage/system/pageBase.jsp" %>
-<%@ page info="文章列表" %>
+<%@ page info="产品列表" %>
 
 <form action="<%=path%>/manage/article" method="post">
     <div style="height:auto!important;height:550px;min-height:550px;">
@@ -16,12 +16,12 @@
             <%=getServletInfo()%>
             <a href="toAdd" class="btn btn-primary"
                style="padding: 2px 15px;float:right;">
-                <i class="icon-plus "></i>添加文章
+                <i class="icon-plus "></i>添加产品
             </a>
         </h3>
         <div class="filter">
             <button method="deletes" class="btn btn-danger" style="padding:0px 5px;margin-top: -4px;"
-                    onclick="return submitIDs(this,'确定删除选择的友情链接信息?');">
+                    onclick="return submitIDs(this,'确定删除选择的信息?');">
                 <i class="icon-trash"></i>删除
             </button>
             <div style="float: right">
@@ -41,8 +41,8 @@
         <table class="table table-bordered table-hover table-striped">
             <tr>
                 <th width="50"><input type="checkbox" id="firstCheckbox"/></th>
-                <th>文章名称</th>
-                <th width="200">文章分类</th>
+                <th>产品名称</th>
+                <th width="200">产品分类</th>
                 <th width="250">创建时间</th>
                 <th width="200">操作</th>
             </tr>

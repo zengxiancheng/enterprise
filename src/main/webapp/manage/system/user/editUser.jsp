@@ -139,7 +139,7 @@
                     <c:choose>
                         <c:when test="${empty e.username}">
                             <input type="text" name="username" id="username"  size="40"
-                                   data-rule="帐号:required;username;length[4~20];remote[unique,id]" >
+                                   data-rule="帐号:required;username;length[4~20];remote[unique]" >
                         </c:when>
                         <c:otherwise>
                             <strong>${e.username}</strong>
@@ -151,7 +151,7 @@
                 <th style="text-align: right;">管理员名称：</th>
                 <td style="text-align: left;">
                     <input type="text" name="nickname" value="${e.nickname}" id="nickname"  size="40"
-                           data-rule="管理员名称:required;nickname;length[2~20];remote[unique, id]"/>
+                           data-rule="管理员名称:required;nickname;length[2~20];remote[unique]"/>
                 </td>
             </tr>
             <tr>
@@ -161,6 +161,19 @@
                            value="${e.email}"/>
                 </td>
             </tr>
+            
+             <tr>
+                <th style="text-align: right;">用户权限：</th>
+                <td style="text-align: left;">
+                     <select id="role" name="role" >
+                        <c:forEach var="item" items="${roles}">
+                            <option value="${item.id}" <c:if test="${e.role eq item.id}">selected="selected" </c:if>>${item.roleName}</option>
+                        </c:forEach>
+                    </select>            
+                </td>
+            </tr>
+            
+            
             <c:choose>
                 <c:when test="${!empty e.username}">
                     <tr>

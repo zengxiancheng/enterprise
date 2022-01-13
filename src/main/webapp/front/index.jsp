@@ -4,7 +4,7 @@
 <%@include file="/front/common/common.jsp" %>
 <style>
     .banners{
-        padding: 130px 0px;width: 1240px;margin:0 auto;
+        padding: 80px 0px 80px;width: 1240px;margin:5px auto;
     }
     .banners_li {
         width: 33.33%;
@@ -51,33 +51,61 @@
 <body>
 <%@include file="/front/common/navigation.jsp" %>
 <%@include file="/front/common/indexSlide.jsp" %>
-<div class="banners" >
+<%-- <div class="banners" >
     <ul>
-        <li class="banners_li">
-            <a href="<%=path%>/service">
+          <li class="banners_li banners_li_last">
+            <a href="<%=path%>/about">
                 <div>
-                    <h3>服务领域</h3>
-                    <p>别墅装修，校区装修</p>
+                    <h3>关于我们</h3>
+                    <p>了解我们，了解益捷</p>
                 </div>
             </a>
         </li>
-        <li class="banners_li">
+        
+         <li class="banners_li">
             <a href="<%=path%>/article">
                 <div>
-                    <h3>新闻动态</h3>
+                    <h3>产品中心</h3>
                     <p>公司动态，行业新闻</p>
                 </div>
             </a>
         </li>
-        <li class="banners_li banners_li_last">
-            <a href="<%=path%>/about">
+        
+        <li class="banners_li">
+            <a href="<%=path%>/service">
                 <div>
-                    <h3>关于我们</h3>
-                    <p>了解我们，了解华宇</p>
+                    <h3>服务领域</h3>
+                    <p>水文水利，石油化工</p>
                 </div>
             </a>
         </li>
+       
+       
     </ul>
+</div> --%>
+
+<div class="index-prod-title">PRODUCT CENTER</div>
+<div class="index-prod-lanxian"></div>
+                 
+<c:forEach var="item" items="<%=SystemManage.getInstance().getArticleCategory()%>">            
+<div class="center">
+   <div class="index-prod-title1">${item.catename}</div>     
+   <c:forEach var="article" items="<%=SystemManage.getInstance().getArticle()%>">  
+   <div class="index-prod-text clearfloat">
+   <ul>     
+   <c:if test="${article.categoryId eq item.id}">
+     <a href="<%=path%>/article/${article.id}">
+                <li class="index-jianju">
+                    <img src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>/${article.image}" alt="${article.title}" width="264" height="264">
+                    <div class="index-prod-biaoti">${article.title}</div>
+                </li>
+            </a>  
+    </c:if>                              
+     </ul>
+    </div>
+    </c:forEach>   
+    <div class="index-gengduo"><a href="<%=path%>/article/${item.code}"><div class="index-zuo"></div>更多产品<div class="index-you"></div></a></div>
 </div>
+</c:forEach>
 <%@include file="/front/common/foot.jsp" %>
 

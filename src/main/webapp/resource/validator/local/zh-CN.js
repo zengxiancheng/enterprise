@@ -35,6 +35,7 @@
             ,chinese: [/^[\u0391-\uFFE5]+$/, "请填写中文字符"]
             ,username: [/^\w{3,12}$/, "请填写3-12位数字、字母"]
             ,password: [/^[\S]{6,16}$/, "请填写6-16位字符，不能包含空格"]
+            ,realnumber: [/^\d+(\.\d+)?$/, "请填写有效的数字"]
             ,accept: function (element, params){
                 if (!params) return true;
                 var ext = params[0],

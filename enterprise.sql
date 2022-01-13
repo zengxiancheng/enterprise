@@ -771,3 +771,20 @@ CREATE TABLE `t_user` (
 -- ----------------------------
 INSERT INTO `t_user` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-30 20:53:09', '2016-06-06 14:48:19', null, null, '超级管理员', 'admin@qq.com', 'attached/headPortrait/20160606/146519569961677556119.jpg');
 INSERT INTO `t_user` VALUES ('2', '123', '202cb962ac59075b964b07152d234b70', '2016-05-17 11:47:57', '2016-05-27 13:09:51', 'admin', 'admin', '123', '123@qq.com', null);
+
+
+-- ----------------------------
+-- Table structure for t_role
+-- ----------------------------
+CREATE TABLE `t_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rolename` varchar(45) NOT NULL,
+  `rolecode` varchar(100) NOT NULL,
+  `createtime` datetime DEFAULT NULL,
+  `updatetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rolecode_UNIQUE` (`rolecode`) USING BTREE,
+  UNIQUE KEY `rolename_UNIQUE` (`rolename`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+

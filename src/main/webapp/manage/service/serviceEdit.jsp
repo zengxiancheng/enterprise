@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/manage/system/pageBase.jsp" %>
-<%@ page info="文章列表" %>
+<%@ page info="产品列表" %>
 <%
     Map<String,String> statuss = new LinkedHashMap<String,String>();
     statuss.put("y","显示");
@@ -56,7 +56,7 @@
             <tr>
                 <th style="text-align: right;">内容</th>
                 <td style="text-align: left;">
-                    <textarea name="contentHtml" id="contentHtml" data-rule="文章内容:required;"
+                    <textarea name="contentHtml" id="contentHtml" data-rule="产品内容:required;"
                               style="width:850px;height:400px;visibility:hidden;">${e.contentHtml}</textarea>
                 </td>
             </tr>

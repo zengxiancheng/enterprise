@@ -20,6 +20,9 @@ import javax.servlet.http.HttpSession;
 
 import com.enterprise.entity.Systemlog;
 import com.enterprise.service.MenuService;
+import com.enterprise.service.RoleService;
+import com.enterprise.service.RolemenuService;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +33,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.enterprise.entity.Menu;
 import com.enterprise.entity.MenuItem;
+import com.enterprise.entity.Role;
+import com.enterprise.entity.Rolemenu;
 import com.enterprise.entity.User;
 import com.enterprise.service.Services;
 import com.enterprise.service.impl.UserServiceImpl;
@@ -66,8 +71,15 @@ public class UserAction extends BaseController<User> {
 
 	@Autowired
 	private UserServiceImpl userServiceImpl;
+	
+	@Autowired
+	private RoleService roleService;
+	
 	@Autowired
 	private MenuService menuService;
+	
+	@Autowired
+	private RolemenuService rolemenuService;
 	@Autowired
 	private SystemlogService systemlogService;
 
@@ -98,7 +110,7 @@ public class UserAction extends BaseController<User> {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login(@ModelAttribute("e") User e, HttpSession session,HttpServletRequest request) {
-		if (session.getAttribute("manage_session_user_info") != null) {
+		if (session.getAttribute("manage_session_user_info") != null) {			
 			return "redirect:/manage/user/home";
 		}
 		/**
@@ -126,7 +138,9 @@ public class UserAction extends BaseController<User> {
 			e.setPassword(password);
 			e = userServiceImpl.login(e);
 			session.setAttribute("manage_session_user_info", e);
-			Collection<MenuItem> userMenus = loadMenus();
+			
+			
+			Collection<MenuItem> userMenus = loadMenus(e);
 			session.setAttribute("userMenus", userMenus);
 			return "redirect:/manage/user/home";
 		}
@@ -178,7 +192,7 @@ public class UserAction extends BaseController<User> {
 			response.addCookie(passwordCookie);
 		}
 		session.setAttribute("manage_session_user_info", u);
-		Collection<MenuItem> userMenus = loadMenus();
+		Collection<MenuItem> userMenus = loadMenus(u);
 		session.setAttribute("userMenus", userMenus);
 		try {
 			insertLog(u, "login");
@@ -232,6 +246,51 @@ public class UserAction extends BaseController<User> {
 		}
 		return root.values();
 	}
+	
+	
+	// 获取登录用户的菜单
+	public Collection<MenuItem> loadMenus(User user) {
+		if (StringUtils.isBlank(user.getRole())) {
+			return loadMenus();
+		}else {
+			Rolemenu Rolemenu=new Rolemenu();
+			Rolemenu.setRoleId(user.getRole());		
+			List<Rolemenu> rolemenus= rolemenuService.selectList(Rolemenu);
+			List<String> list=new ArrayList<>();
+			for (Rolemenu rolemenu: rolemenus) {
+				list.add(rolemenu.getMenuId());
+			}
+			
+			List<Menu> menus = menuService.selectList(list);
+			LinkedHashMap<String, MenuItem> root = new LinkedHashMap<String, MenuItem>();
+			for (Menu menu : menus) {
+				MenuItem item = new MenuItem(menu.getName(), null);
+				item.setId(String.valueOf(menu.getId()));
+				item.setPid(menu.getPid());
+				item.setIcon(menu.getIcon());
+				item.setUrl(StringUtils.trim(menu.getUrl()));
+				if (item.isRootMenu()) {
+					root.put(item.getId(), item);
+				}
+			}
+			for (Menu menu : menus) {
+				MenuItem item = new MenuItem(menu.getName(), null);
+				item.setId(String.valueOf(menu.getId()));
+				item.setPid(menu.getPid());
+				item.setIcon(menu.getIcon());
+				item.setUrl(StringUtils.trimToEmpty(menu.getUrl()));
+				if (!item.isRootMenu() && !item.isButton()) {
+					MenuItem parentItem = root.get(item.getPid());
+					if (parentItem != null) {
+						parentItem.addChildren(item);
+					}
+				}
+			}
+			return root.values();
+		}
+		
+		
+	}
 
 	/**
 	 * 登出
@@ -277,6 +336,8 @@ public class UserAction extends BaseController<User> {
 	public String toEdit(@ModelAttribute("e") User e, ModelMap model) throws Exception {
 		e = userServiceImpl.selectOne(e);
 		model.addAttribute("e", e);
+		List<Role> roles=roleService.selectList(new Role());
+		model.addAttribute("roles", roles);
 		return page_toEdit;
 	}
 
@@ -286,6 +347,8 @@ public class UserAction extends BaseController<User> {
 	@RequestMapping("toAdd")
 	@Override
 	public String toAdd(@ModelAttribute("e") User user, ModelMap model) throws Exception {
+		List<Role> roles=roleService.selectList(new Role());
+		model.addAttribute("roles", roles);		
 		return page_toAdd;
 	}
 

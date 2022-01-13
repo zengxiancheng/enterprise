@@ -113,10 +113,11 @@
 <div id="login">
     <div class="dologo"></div>
     <form action="<%=path %>/manage/user/login" method="post">
-        <div style="heigth: 44px;line-height: 44px;font-size:22px;text-align: center;"><%=SystemManage.getInstance().getSystemSetting().getName() %>后台管理系统</div>
+        <div style="heigth: 44px;line-height: 44px;font-size:22px;text-align: center;"><%=SystemManage.getInstance().getSystemSetting().getName() %></div>
         <div style="height: 26px;line-height: 26px;color: red;text-align: center;">${errorMsg}</div>
         <ul>
             <li class="inpLi"><b>用户名：</b><input type="text" name="username" id="username" class="inpLogin"
+                                         
                                                 placeholder="账号" value="admin"/></li>
             <li class="inpLi"><b>密码：</b><input type="password" name="password" id="password" class="inpLogin" value="123456"
                                                placeholder="密码"/></li>

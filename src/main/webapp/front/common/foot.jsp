@@ -10,7 +10,7 @@
 <div class="foot">
     <div class="foot_top">
         <div style="width: 1000px;margin: 12px auto 0;overflow: hidden;">
-            <ul>
+            <ul style="text-align:center">
                 <li>友情链接：</li>
                 <c:forEach var="item" items="<%=SystemManage.getInstance().getFriendLinks()%>">
                     <li><a href="${item.url}" target="${item.target}">${item.name}</a></li>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="foot_bottom">
-        <p> Copyright
+        <p style="text-align:center"> Copyright
             2016 <%=SystemManage.getInstance().getSystemSetting().getTitle()%> <%=SystemManage.getInstance().getSystemSetting().getIcp()%>
         </p>
     </div>

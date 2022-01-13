@@ -55,8 +55,8 @@
 								<td><input type="hidden" value="${e.id}" name="id" label="id" id="idd"/></td>
 							</tr>
 							<tr>
-								<td><b>图片名称</b>
-									<input type="text" value="${e.title}" size="20" name="title"  data-rule="图片名称:required;title;length[1~45];"
+								<td><b>图片标题</b>
+									<input type="text" value="${e.title}" size="20" name="title"  data-rule="图片名称:required;title;length[1~80];"
 										   id="title" />
 								</td>
 							</tr>
@@ -70,12 +70,27 @@
 												<img style="max-width: 50px;max-height: 50px;" alt="" src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>/${e.pictureUrl}">
 											</a>
 										</c:when>
-									</c:choose>         </td>
+									</c:choose>         
+								</td>
 							</tr>
 							<tr>
-								<td><b>链接地址</b>
-									<input type="text"   size="35" value="${e.link}" name="link"  id="link"/>
+							<td><b>图片上部描述</b>
+									<textarea  style="height:80px" name="topDesc" id="topDesc" cols="40">${e.topDesc}</textarea>   
+							</td>
 							</tr>
+							
+							<tr>
+								<td><b>图片下部描述</b>								
+								<textarea style="height:80px"  name="buttomDesc" id="buttomDesc" cols="40">${e.buttomDesc}</textarea>   									
+							   </td>
+							</tr>
+							
+							<tr>
+								<td><b>图片链接</b>
+									<input type="text"   size="35" value="${e.link}" name="link"  id="link"/>
+								</td>
+							</tr>
+		
 							<tr>
 								<td><b>排序</b>
 									<input type="text"  value="${e.orders}" name="orders" size="20"  data-rule="排序:required;integer[+];orders;length[1~5];"

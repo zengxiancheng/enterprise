@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+
+<select id="product.selectPageList" parameterType="com.enterprise.entity.Product"
+   resultType="com.enterprise.entity.Product">
+		select * from t_product where 1=1
+		<if test="id!=0">
+			and id=#{id}
+		</if>
+		order by id
+		limit #{offset},#{pageSize}
+	</select>
+	
+	<select id="product.selectPageCount" parameterType="com.enterprise.entity.Product"
+		resultType="java.lang.Integer">
+		select count(*) from (
+		select * from t_product where 1=1
+		) a
+	</select>
+	<select id="product.selectList" parameterType="hashMap" resultType="com.enterprise.entity.Product">
+		select * from t_product where 1=1
+		<if test="id!=null and id!=''">
+			and id=#{id}
+		</if> 
+	</select>
+
+	<select id="product.selectOne" parameterType="com.enterprise.entity.Product" resultType="com.enterprise.entity.Product">
+		select * from t_product where 1=1
+		<if test="id!=null and id!=''">
+			and id=#{id}
+		</if>
+		<if test="name!=null and name!=''">
+			and name=#{name}
+		</if> 
+		<if test="model!=null and model!=''">
+			and model=#{model}
+		</if> 
+		
+	</select>
+	<select id="product.getCount" parameterType="com.enterprise.entity.Product" resultType="java.lang.Integer">
+		SELECT count(*) FROM t_product m where 1=1 
+		<if test="id!=null and id!=''">
+			and m.id=#{id}
+		</if>
+		<if test="pid!=null and pid!=''">
+			and m.pid=#{pid}
+		</if>
+	</select>
+	<delete id="product.delete" parameterType="com.enterprise.entity.Product">
+		delete from t_product where id=#{id}
+	</delete>
+	<insert id="product.insert" parameterType="com.enterprise.entity.Product" useGeneratedKeys="true" keyProperty="id">
+		insert into t_product (id,name,measure_type,model,range_buttom,range_ceil,ip,input,output,unit,gmt_created,modify_user_code,modify_user_name,gmt_modified,is_deleted,user_id,reserved1,
+		reserved2,reserved3,reserved4,reserved5) values (id,#{name},#{measureType},#{model},#{rangeButtom},#{rangeCeil},#{ip},#{input},#{output},#{unit},now(),#{modifyUserCode},#{modifyUserName},now(),0,#{userId},#{reserved1},
+		#{reserved2},#{reserved3},#{reserved4},#{reserved5})
+	</insert>
+	<update id="product.update" parameterType="com.enterprise.entity.Product">
+		update t_product set id=#{id}
+		<if test="pid!=null and pid!=''">
+			,pid=#{pid}
+		</if>
+		<if test="url!=null and url!=''">
+			,url=#{url}
+		</if>
+		<if test="name!=null and name!=''">
+			,name=#{name}
+		</if>
+		<if test="orderNum!=null and orderNum!=''">
+			,orderNum=#{orderNum}
+		</if> 
+		<if test="type!=null and type!=''">
+			,type=#{type}
+		</if>
+		<if test="icon!=null and icon!=''">
+			,icon=#{icon}
+		</if>
+		where id=#{id}
+	</update>
+</mapper>

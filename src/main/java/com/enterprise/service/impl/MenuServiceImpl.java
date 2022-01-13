@@ -2,21 +2,18 @@ package com.enterprise.service.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
-
 import com.enterprise.service.MenuService;
 import org.springframework.stereotype.Service;
-
 import com.enterprise.entity.Menu;
 import com.enterprise.entity.MenuItem;
 import com.enterprise.entity.MenuType;
 import com.enterprise.entity.User;
-import com.enterprise.service.Services;
 import com.enterprise.dao.BaseDao;
 import com.enterprise.entity.page.PageModel;
 
@@ -74,6 +71,16 @@ public class MenuServiceImpl implements MenuService {
 			return dao.selectList("menu.selectList");
 		} 
 		return dao.selectList("menu.selectMenus",param);
+	}
+	
+	
+	public List<Menu> selectList(List<String> param) {
+		if (param.size()>0) {
+			return dao.selectList("menu.getMenus",param);	
+		}else {
+			return dao.selectList("menu.selectList");
+		}
+		
 	}
 	public int getCount(Menu menu) {
 		return dao.getCount("menu.getCount", menu);
