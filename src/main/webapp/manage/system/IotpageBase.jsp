@@ -91,7 +91,7 @@
                 <ul class="breadcrumb" style="line-height: 40px;">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        <a href="<%=path %>/manage/user/home">首页</a>
+                        <a>智能物联</a>
                     </li>
                     <li class="active"><%=getServletInfo()%></li>
                 </ul><!-- .breadcrumb -->

@@ -34,7 +34,7 @@ upsSwiper.$el.find(".ups-icon-videoplay").on('click', function() {
 
 swiperHeight = upsSwiper.height
 
-window.onscroll = function scroll() {
+/*window.onscroll = function scroll() {
 	if (window.pageYOffset / upsSwiper.height < 1) {
 		scrollScale = window.pageYOffset / swiperHeight;
 	} else {
@@ -43,4 +43,4 @@ window.onscroll = function scroll() {
 
 	upsSwiper.slides.find(".img").transform('translateY(' + 2 * scrollScale + '%)') //滚动一屏swiper高度则图片向下18%（范围0-40）
 
-}
+}*/

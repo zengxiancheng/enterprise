@@ -26,8 +26,8 @@ body {
 	width:50%;
 	max-width: 460px;
 	position: absolute;
-	right: 60px;
-	bottom: 90px;
+	right: 100px;
+	bottom: 50px;
 	z-index: 20;
 }
 @media screen and (max-width: 768px) {
@@ -36,7 +36,8 @@ body {
 	}
 }
 .swiper-slide .content .txt {
-	padding: 100px;
+	padding: 10px;
+	color:rgba(255,255,255,0.85);
 }
 /* .swiper-slide .content .txt {
 	padding: 20px;
@@ -45,8 +46,9 @@ body {
 
 .swiper-slide .content .txt h3 {
 	font-family: "BerlingskeSans Serif",Georgia,Times,serif;
-	margin: 0;
-	font-size: 2.3em;
+	margin-top: 10px;
+	margin-left: -200px;
+	font-size: 2.8em;
 	font-weight: normal;
 }
 
@@ -76,14 +78,14 @@ body {
 	background: #006a55;
 }
 
-.img-fix {
+/* .img-fix {
 	margin-top: -28%;
 	overflow: hidden;
 }
 
-.img-inner {
+ .img-inner {
 	transform: translateY(40%);
-}
+}  */
 
 .swiper-container img {
 	width: 100%;

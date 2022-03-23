@@ -10,7 +10,7 @@
 <div class="foot">
     <div class="foot_top">
         <div style="width: 1000px;margin: 12px auto 0;overflow: hidden;">
-            <ul style="text-align:center">
+            <ul style="text-align:center;margin-left: 100px">
                 <li>友情链接：</li>
                 <c:forEach var="item" items="<%=SystemManage.getInstance().getFriendLinks()%>">
                     <li><a href="${item.url}" target="${item.target}">${item.name}</a></li>

@@ -66,25 +66,17 @@
 	<update id="indeximg.update" parameterType="com.enterprise.entity.IndexImg">
 		update t_indeximg
 		set id=#{id}
-		<if test="title!=null and title!=''">
 			,title=#{title}
-		</if>
 		<if test="pictureUrl!=null and pictureUrl!=''">
 			,pictureUrl=#{pictureUrl}
 		</if>
-		<if test="link!=null and link!=''">
 			,link=#{link}
-		</if>
 			, orders=#{orders}
 		<if test="status!=null and status!=''">
 			, status=#{status}
 		</if>
-		<if test="topDesc!=null and topDesc!=''">
-			,top_desc=#{topDesc} 
-		</if>		
-		<if test="buttomDesc!=null and buttomDesc!=''">
+			,top_desc=#{topDesc} 		
 			, buttom_desc= #{buttomDesc}
-		</if>
 		where 1=1 and id=#{id}
 	</update>
 	<select id="indeximg.selectOne" parameterType="com.enterprise.entity.IndexImg" resultType="com.enterprise.entity.IndexImg">

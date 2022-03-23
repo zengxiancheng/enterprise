@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 服务领域
+ * 解决方案
  * Created by Cesiumai on 2016/7/26.
  */
 @Controller("serviceActionController")
 @RequestMapping("/")
 public class ServiceAction {
     /**
-     * 跳转到“服务领域”
+     * 跳转到“解决方案”
      * @return
      * @throws Exception
      */

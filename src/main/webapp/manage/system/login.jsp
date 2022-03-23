@@ -13,11 +13,18 @@
     <style type="text/css">
         body{
             font-size:12px;
+            background-color: #E0E0E0;
         }
         ul, ol {
             list-style: none;
             margin:0px;
             padding: 0px;
+        }
+         #login  {
+           background-color: red;
+           margin-top:30px;
+           padding-left:30px;
+           padding-right:30px;
         }
 
         #login .inpLi {
@@ -51,7 +58,7 @@
         }
 
         #login .dologo {
-            height: 50px;
+            height: 10px;
             margin-bottom: 30px;
         }
 
@@ -109,7 +116,6 @@
 </head>
 
 <body>
-
 <div id="login">
     <div class="dologo"></div>
     <form action="<%=path %>/manage/user/login" method="post">
@@ -118,8 +124,8 @@
         <ul>
             <li class="inpLi"><b>用户名：</b><input type="text" name="username" id="username" class="inpLogin"
                                          
-                                                placeholder="账号" value="admin"/></li>
-            <li class="inpLi"><b>密码：</b><input type="password" name="password" id="password" class="inpLogin" value="123456"
+                                                placeholder="账号" value=""/></li>
+            <li class="inpLi"><b>密码：</b><input type="password" name="password" id="password" class="inpLogin" value=""
                                                placeholder="密码"/></li>
             <li class="captchaPic">
                 <div class="inpLi" style="overflow: hidden;width: 236px;float: left;"><b>验证码：</b><input name="manage_vcode" type="text" class="captcha"></div>

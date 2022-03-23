@@ -155,7 +155,7 @@ public class FrontCache implements ServletContextAware {
 	}
 
 	/**
-	 * 加载服务领域
+	 * 加载解决方案
 	 * @throws Exception
      */
 	public void loadService() throws Exception{

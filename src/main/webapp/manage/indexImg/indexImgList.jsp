@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/manage/system/pageBase.jsp" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page info="门户滚动图片"%>
+<%@ page info="门户轮播图"%>
 <%
 	Map<String,String> status = new HashMap<String,String>();
 	status.put("y","显示");
@@ -33,14 +33,9 @@
 	<div style="height:auto!important;height:550px;min-height:550px;">
 		<h3 style="border-bottom: 1px solid #D7D7D7;color: #666666;font-size: 28px;padding-bottom: 20px;margin-bottom: 30px;">
 			<%=getServletInfo()%></h3>
-
-
 			<div class="alert alert-info">
 				注意：图片尺寸请参考1920*480。
 			</div>
-
-
-
 		<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
 			<tr>
 				<th style="text-align: center;">添加图片</th>
@@ -56,8 +51,7 @@
 							</tr>
 							<tr>
 								<td><b>图片标题</b>
-									<input type="text" value="${e.title}" size="20" name="title"  data-rule="图片名称:required;title;length[1~80];"
-										   id="title" />
+									<input type="text" value="${e.title}" size="20" name="title"  id="title" />
 								</td>
 							</tr>
 							<tr>

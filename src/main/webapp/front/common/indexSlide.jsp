@@ -17,8 +17,11 @@
       <div class="swiper-wrapper">     
       <c:forEach var="item" items="<%=SystemManage.getInstance().getIndexImgs()%>">
         <div class="swiper-slide">
-          <div class="content"><div class="txt"><h3>${item.title}</h3><p>${item.topDesc} </p><p>${item.buttomDesc}</p></div><a href="${item.link}" class="link">了解更多</a></div>
-          <div class="img-fix"><div class="img-inner"><img src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>/${item.pictureUrl}" class="img"></div></div>
+          <div class="content">
+          <div class="txt"><h3>${item.title}</h3><p>${item.topDesc}</p><span>${item.buttomDesc}</span></div>
+          <a href="${item.link}" class="link">了解更多</a>
+          </div>          
+          <div class="img-fix"><div class="img-inner"><img src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>${item.pictureUrl}" class="img"></div></div>
         </div>
       </c:forEach>
       </div>

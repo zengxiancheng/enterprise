@@ -171,7 +171,12 @@ public class UserAction extends BaseController<User> {
 			model.addAttribute("errorMsg", "验证码不能为空");
 			return page_input;
 		}
-		String manage_vcode = RequestHolder.getSession().getAttribute("validateCode").toString();
+		
+		if (RequestHolder.getSession().getAttribute("validateCode")==null) {
+			return page_input;
+		}
+		
+		String manage_vcode = RequestHolder.getSession().getAttribute("validateCode").toString();		
 		if(StringUtils.isNotBlank(manage_vcode)&&!(manage_vcode.toLowerCase()).equals(e.getManage_vcode().toLowerCase())){
 			model.addAttribute("errorMsg", "验证码错误");
 			return page_input;

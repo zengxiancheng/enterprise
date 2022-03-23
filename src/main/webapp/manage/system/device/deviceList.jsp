@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="/manage/system/pageBase.jsp" %>
+<%@ include file="/manage/system/IotpageBase.jsp" %>
 <%@ page info="设备管理" %>
 <form action="<%=path%>/manage/device" method="post">
     <div style="height:auto!important;height:550px;min-height:550px;">

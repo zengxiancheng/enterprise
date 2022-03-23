@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/manage/system/pageBase.jsp" %>
-<%@ page info="产品列表" %>
+<%@ page info="产品中心" %>
 
 <form action="<%=path%>/manage/article" method="post">
     <div style="height:auto!important;height:550px;min-height:550px;">

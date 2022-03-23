@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
+import net.sf.json.JSONObject;
+
 public class AddressUtil {
 	/**
 	 * 获取ip
@@ -33,9 +35,27 @@ public class AddressUtil {
 	}
 	
 	public static String getAddress(String content,String encodingStr) throws UnsupportedEncodingException{
-		String url = "http://ip.taobao.com/service/getIpInfo.php";
+		/*String url = "http://ip.taobao.com/service/getIpInfo.php";*/
+		
+		String url="https://ip.taobao.com/outGetIpInfo";
 		String returnStr = getResult(url, content, encodingStr);
-		if(returnStr != null){
+	    JSONObject object= JSONObject.fromObject(returnStr);
+	    JSONObject data=   (JSONObject) object.get("data");
+	    
+	    if (data!=null) {
+	    	String region = data.getString("region");
+			String city = data.getString("city");
+			String isp = data.getString("isp");
+
+			if (StringUtils.isNotBlank(region) && StringUtils.isNotBlank(city) && StringUtils.isNotBlank(isp)) {
+				return region + city + "[" + isp + "]";
+			}
+	    	
+	    	
+		}
+	    
+	    
+		/*if(returnStr != null){
 			String[] temp = returnStr.split(",");
 			if(temp.length<3){
 				return "0";//无效ip
@@ -49,7 +69,7 @@ public class AddressUtil {
 			if (StringUtils.isNotBlank(region) && StringUtils.isNotBlank(city) && StringUtils.isNotBlank(isp)) {
 				return region + city + "[" + isp + "]";
 			}
-		}
+		}*/
 		return "";
 	}
 	
@@ -63,7 +83,9 @@ public class AddressUtil {
 			connection.setReadTimeout(2000);// 设置读取数据超时时间，单位毫秒
 			connection.setDoOutput(true);// 是否打开输出流 true|false
 			connection.setDoInput(true);// 是否打开输入流true|false
-			connection.setRequestMethod("POST");// 提交方法POST|GET
+			/*connection.setRequestMethod("POST");// 提交方法POST|GET
+*/			
+			connection.setRequestMethod("GET");
 			connection.setUseCaches(false);// 是否缓存true|false
 			connection.connect();// 打开连接端口
 			DataOutputStream out = new DataOutputStream(
@@ -156,5 +178,7 @@ public class AddressUtil {
 		}
 		return outBuffer.toString();
 	}
+	
+
 
 }

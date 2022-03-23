@@ -8,15 +8,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/manage/system/pageBase.jsp" %>
-<%@ page info="服务领域" %>
-
+<%@ page info="解决方案" %>
 <form action="<%=path%>/manage/service" method="post">
     <div style="height:auto!important;height:550px;min-height:550px;">
         <h3 style="border-bottom: 1px solid #D7D7D7;color: #666666;font-size: 28px;padding-bottom: 20px;margin-bottom: 30px;">
             <%=getServletInfo()%>
             <a href="toAdd" class="btn btn-primary"
                style="padding: 2px 15px;float:right;">
-                <i class="icon-plus "></i>添加服务
+                <i class="icon-plus "></i>添加方案
             </a>
         </h3>
         <div class="filter">

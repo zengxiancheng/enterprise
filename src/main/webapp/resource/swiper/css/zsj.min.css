@@ -51,16 +51,16 @@ body{overflow-x: hidden;}
 .head-xian{width: 100%;height: 1px;background: #c9c9c9;position: absolute;left: 0;margin-top: 40px;}
 
 /*首页*/
-.index-prod-title{text-align: center;font-size: 70.23px;font-family: "Iskoola Pota";color: #0F8EFF;width: 100%;margin-top: 49px;border-bottom: 1px solid #d5d5d5;line-height: 47px;}
+.index-prod-title{text-align: center;font-size: 70.23px;font-family: "Iskoola Pota";color: #0F8EFF;width: 100%;margin-top: 39px;padding-bottom: 20px;border-bottom: 1px solid #d5d5d5;line-height: 47px;}
 .index-prod-lanxian{width: 118px;height: 2px;margin: 0 auto;background: #2861bb;}
 .index-prod-title1{text-align: center;font-size: 24px;color: #131313;margin-top: 4px;margin-bottom: 22px;}
-.index-prod-text ul li{float: left;width: 264px;height: 264px;border: 3px solid #457ace;position: relative;}
+.index-prod-text ul li{float: left;width: 260px;height: 260px;border: 3px solid #457ace;position: relative;}
 .index-prod-text ul a{color: #457ace;font-size: 16px;font-weight: bold;}
 .index-jianju{margin-right: 6px;}
-.index-prod-biaoti{width: 270px;height: 39px;position: absolute;left: -3px;text-align: center;line-height: 39px;bottom: -42px;font-weight: bold;}
+.index-prod-biaoti{width: 264px;height: 39px;position: absolute;left: -3px;text-align: center;line-height: 39px;bottom: 0px;font-weight: bold;}
 .index-prod-text ul a:hover .index-prod-biaoti{background: #457ace;}
 .index-prod-text ul a:hover{color: #fff;font-size: 16px;font-weight: bold;}
-.index-gengduo{width: 133px;height: 38px;border: 2px solid #457ace;margin: 0 auto;text-align: center;line-height: 38px;margin-top: 69px;position: relative;margin-bottom: 59px;}
+.index-gengduo{width: 133px;height: 38px;border: 2px solid #457ace;margin: 0 auto;text-align: center;line-height: 38px;margin-top: 30px;position: relative;margin-bottom: 40px;}
 .index-gengduo a{font-size: 16px;color: #457ace;}
 .index-zuo{width: 60px;height: 2px;background: #457ace;position: absolute;top: 18px;left: -48px;}
 .index-you{width: 60px;height: 2px;background: #457ace;position: absolute;top: 18px;right: -48px;}

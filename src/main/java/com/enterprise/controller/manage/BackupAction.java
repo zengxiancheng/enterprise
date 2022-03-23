@@ -2,6 +2,7 @@ package com.enterprise.controller.manage;
 
 import com.enterprise.entity.BackUp;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +26,8 @@ import java.util.*;
 @RequestMapping("/manage/backups/")
 public class BackupAction{
 
+	static Logger logger = Logger.getLogger(BackupAction.class);
+	
     /**
      * 数据备份-数据表列表
      * @param model
@@ -40,13 +43,21 @@ public class BackupAction{
         backupList.add(new BackUp("系统日志","t_systemlog"));
         backupList.add(new BackUp("留言信息","t_messages"));
         backupList.add(new BackUp("招聘信息","t_recruitment"));
-        backupList.add(new BackUp("门户滚动图片","t_indeximg"));
+        backupList.add(new BackUp("门户轮播图","t_indeximg"));
         backupList.add(new BackUp("友情链接","t_friendlinks"));
         backupList.add(new BackUp("文章表", "t_article"));
         backupList.add(new BackUp("文章分类表", "t_articlecategory"));
         backupList.add(new BackUp("服务领域", "t_service"));
         backupList.add(new BackUp("联系我们", "t_contact"));
         backupList.add(new BackUp("关于我们", "t_about"));
+        //
+        backupList.add(new BackUp("设备信息", "t_device"));
+        backupList.add(new BackUp("上传数据", "t_history"));
+        backupList.add(new BackUp("产品信息", "t_product"));
+        backupList.add(new BackUp("项目信息", "t_project"));
+        backupList.add(new BackUp("角色信息", "t_role"));
+        backupList.add(new BackUp("角色菜单", "t_rolemenu"));
+        
         model.addAttribute("backupList",backupList);
         return "/manage/backups/backupsList";
     }
@@ -190,7 +201,10 @@ public class BackupAction{
         }
         Runtime runtime = Runtime.getRuntime();
         String command = getExportCommand(request,properties,sb.toString());
-        runtime.exec(command);
+        logger.info(command);
+        //设置运行目录
+        File dir=new File("D://IDE//database//mysql-5.5.40-winx64//bin//");
+        runtime.exec(command, null, dir);
     }
 
     /**
@@ -228,11 +242,11 @@ public class BackupAction{
         String password = properties.getProperty("jdbc.password");
         String exportDatabaseName = properties.getProperty("jdbc.databaseName");
         String host = properties.getProperty("jdbc.host");
-        String port = properties.getProperty("jdbc.port");
+        String port = properties.getProperty("jdbc.port");      
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String ymd = sdf.format(new Date());
-        String exportPath = realPath+"\\backup\\" + ymd + ".sql";
-        command.append("mysqldump -u").append(username).append(" -p").append(password).append(" -h").append(host).append(" -P").append(port).append(" ").append(exportDatabaseName).append(tableName).append(" -r ").append(exportPath);
+        String exportPath = realPath+"backup\\" + ymd + ".sql";
+        command.append("cmd /c mysqldump -u").append(username).append(" -p").append(password).append(" -h").append(host).append(" -P").append(port).append(" ").append(exportDatabaseName).append(tableName).append(" -r ").append(exportPath);
         return command.toString();
     }
 

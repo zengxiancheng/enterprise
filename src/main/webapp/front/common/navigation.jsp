@@ -47,14 +47,14 @@
 
     }
 </style>
-<div style="width:1100px;height:90px;margin: 0 auto;">
-    <div style="width: 201px;height: 90px;float: left;">
+<div style="width:100%;height:90px;margin: 0 auto;">
+    <div style="width:20%; height: 90px;float: left;">
         <a href="index">
         <img src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath() %><%=SystemManage.getInstance().getSystemSetting().getLogo() %>"
-             width="201px" height="90px"/>
+             width="90px" height="90px" style="padding-left:170px"/>
             </a>
     </div>
-    <div style="width:898px;height:90px;float:right;overflow: hidden">
+    <div style="width:80%;height:90px;float:right;overflow: hidden">
         <ul class="nav">
             <li>
                 <a href="<%=path%>/index">首 页</a>
@@ -66,7 +66,7 @@
                 <a href="<%=path%>/article">产品中心</a>
             </li>
             <li>
-                <a href="<%=path%>/service">服务领域</a>
+                <a href="<%=path%>/service">解决方案</a>
             </li>
             
             <li>

@@ -89,21 +89,22 @@
                  
 <c:forEach var="item" items="<%=SystemManage.getInstance().getArticleCategory()%>">            
 <div class="center">
-   <div class="index-prod-title1">${item.catename}</div>     
-   <c:forEach var="article" items="<%=SystemManage.getInstance().getArticle()%>">  
-   <div class="index-prod-text clearfloat">
-   <ul>     
+   <div class="index-prod-title1">${item.catename}</div> 
+    <div class="index-prod-text clearfloat">      
+   <ul> 
+   <c:forEach var="article" items="<%=SystemManage.getInstance().getArticle()%>">      
    <c:if test="${article.categoryId eq item.id}">
      <a href="<%=path%>/article/${article.id}">
-                <li class="index-jianju">
-                    <img src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>/${article.image}" alt="${article.title}" width="264" height="264">
+                <li class="index-jianju" style="margin-top:15px">
+                    <img src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>${article.image}" alt="${article.title}" style="margin-left:27px;"/>
+                              
                     <div class="index-prod-biaoti">${article.title}</div>
                 </li>
             </a>  
-    </c:if>                              
-     </ul>
-    </div>
-    </c:forEach>   
+    </c:if>                                      
+    </c:forEach> 
+    </ul>
+    </div>  
     <div class="index-gengduo"><a href="<%=path%>/article/${item.code}"><div class="index-zuo"></div>更多产品<div class="index-you"></div></a></div>
 </div>
 </c:forEach>

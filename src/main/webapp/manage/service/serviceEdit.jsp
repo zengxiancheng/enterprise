@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/manage/system/pageBase.jsp" %>
-<%@ page info="产品列表" %>
+<%@ page info="解决方案" %>
 <%
     Map<String,String> statuss = new LinkedHashMap<String,String>();
     statuss.put("y","显示");

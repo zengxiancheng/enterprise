@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="/manage/system/pageBase.jsp" %>
+<%@ include file="/manage/system/IotpageBase.jsp" %>
 <%@ page info="项目管理" %>
 <%@ taglib prefix="c"
            uri="http://java.sun.com/jsp/jstl/core" %>
@@ -128,7 +128,7 @@
                 <td style="text-align: left;">                    
                       <c:choose>
                         <c:when test="${empty e.name}">
-                            <input type="text" name="owner" value="${e.name}" id="owner"  size="40"
+                            <input type="text" name="name" value="${e.name}" id="owner"  size="40"
                                     data-rule="项目名称:required;nickname;length[2~20];remote[unique]"/> 
                         </c:when>
                         <c:otherwise>
